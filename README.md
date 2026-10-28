@@ -30,9 +30,7 @@ python3 -m http.server 8000
 3. Pick the branch **main** and the folder **/ (root)**, then click **Save**.
 4. After a minute the site is live at `https://sardorj.github.io/Notice-Website/`. A custom domain can be added on the same page.
 
-This repository is private. GitHub Pages for private repositories needs a paid GitHub plan; on a free plan, make the repository public first.
-
-Canonical links, `og:image`, `og:url`, the JSON-LD and `sitemap.xml` use absolute URLs on `https://sardorj.github.io/Notice-Website/`. If you move to a custom domain, search and replace that address in all files. The 404 page uses root-relative links (`/styles.css`), which work on a custom domain. On the project URL `/Notice-Website/`, change them to `/Notice-Website/...`.
+Canonical links, `og:image`, `og:url`, the JSON-LD and `sitemap.xml` use absolute URLs on `https://sardorj.github.io/Notice-Website/`. If you move to a custom domain, search and replace that address in all files. The 404 page uses absolute links under `/Notice-Website/...` so it works at any depth on the project URL. If you move to a custom domain served from the root, change them back to `/...`.
 
 `sitemap.xml` can be submitted in Google Search Console. The FAQ answers on the landing page also appear in a `FAQPage` JSON-LD block in `index.html`; keep the two in sync when you edit a question.
 
