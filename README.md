@@ -6,13 +6,14 @@ The static website for [Notice – Mindful Screen Time](https://apps.apple.com/a
 
 | File | What it is |
 |:--|:--|
-| `index.html` | Landing page: Dynamic Island hero, the 5/10/20 demo, how setup works, a tap-through app preview, privacy, App Store screenshots and FAQ |
+| `index.html` | Landing page: Dynamic Island hero, a scroll-driven 5/10/20 demo (Balanced), a before/during/after timeline, how setup works, a tap-through app preview, privacy, App Store screenshots and FAQ |
 | `privacy.html` | Privacy policy (same content as the 17 Oct 2026 policy) |
 | `support.html` | Support: contact, setup, permissions, troubleshooting, deleting data |
 | `terms.html` | Terms of use (**draft, needs review**) |
 | `404.html` | Not-found page (GitHub Pages and Netlify pick it up automatically) |
 | `styles.css`, `app.js` | Shared styles and the interactive demo/preview |
 | `assets/` | App icon, App Store badge, OG image, screenshots |
+| `sitemap.xml` | Sitemap for search engines |
 | `.nojekyll` | Tells GitHub Pages to serve the files as they are |
 
 ## Preview locally
@@ -31,7 +32,11 @@ python3 -m http.server 8000
 
 This repository is private. GitHub Pages for private repositories needs a paid GitHub plan; on a free plan, make the repository public first.
 
-After publishing, change the `og:image` / `twitter:image` meta tags in each page to the full URL (for example `https://sardorj.github.io/Notice-Website/assets/og-image.png`) so link previews show the image. The 404 page uses root-relative links (`/styles.css`), which work on a custom domain. On the project URL `/Notice-Website/`, change them to `/Notice-Website/...`.
+Canonical links, `og:image`, `og:url`, the JSON-LD and `sitemap.xml` use absolute URLs on `https://sardorj.github.io/Notice-Website/`. If you move to a custom domain, search and replace that address in all files. The 404 page uses root-relative links (`/styles.css`), which work on a custom domain. On the project URL `/Notice-Website/`, change them to `/Notice-Website/...`.
+
+`sitemap.xml` can be submitted in Google Search Console. The FAQ answers on the landing page also appear in a `FAQPage` JSON-LD block in `index.html`; keep the two in sync when you edit a question.
+
+Small UI icons use `assets/icon-192.png` (20 KB). `icon-512.png` is kept for the JSON-LD image and `icon-1024.png` as the source.
 
 ## Contact
 

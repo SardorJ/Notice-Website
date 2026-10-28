@@ -5,7 +5,8 @@
   'use strict';
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (id) { return document.getElementById(id); };
-  var S = { rem: 5, red: 10, alarm: 20, alarmOn: true };
+  var S = { rem: 5, red: 10, alarm: 20, alarmOn: true, preset: 'balanced' };
+  var PRESETS = { mild: [10, 20, 30], balanced: [5, 10, 20], strict: [2, 5, 10] };
 
   function fmt(sec) {
     sec = Math.max(0, Math.floor(sec));
@@ -21,119 +22,147 @@
     var p = svg && svg.querySelector('.prog');
     if (p) p.setAttribute('stroke-dasharray', (Math.max(0, Math.min(1, frac)) * 100).toFixed(2) + ' 100');
   }
+  /* Runs start() while el is on screen and the tab is visible, stop() otherwise. */
+  function whileVisible(el, start, stop) {
+    if (!('IntersectionObserver' in window)) { start(); return; }
+    var onScreen = false, running = false;
+    var update = function () {
+      var want = onScreen && !document.hidden;
+      if (want && !running) { running = true; start(); }
+      else if (!want && running) { running = false; stop(); }
+    };
+    new IntersectionObserver(function (es) { onScreen = es[es.length - 1].isIntersecting; update(); }).observe(el);
+    document.addEventListener('visibilitychange', update);
+  }
+
+  /* Arrow keys move between options in every radio group. */
+  document.querySelectorAll('[role=radiogroup]').forEach(function (g) {
+    g.addEventListener('keydown', function (e) {
+      var d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (!d) return;
+      var bs = Array.prototype.slice.call(g.querySelectorAll('[role=radio]'));
+      var i = bs.indexOf(document.activeElement);
+      if (i < 0) return;
+      e.preventDefault();
+      var n = bs[(i + d + bs.length) % bs.length];
+      n.focus(); n.click();
+    });
+  });
 
   /* ---------- hero: the 10-minute moment, in real time ---------- */
   var hero = $('heroStage');
   if (hero) {
     var hT = $('heroTime'), hCap = $('heroCap'), hRing = hero.querySelector('.ring');
-    var start = 592, end = 616, t0 = performance.now();
+    var start = 592, end = 616;
     var renderHero = function (sec) {
       var red = sec >= 600;
       hT.textContent = fmt(sec);
       setRing(hRing, ringFrac(sec, 600));
       hero.classList.toggle('red', red);
-      var cap = red ? 'At 10 minutes the timer turns red.' : 'The timer runs in the Dynamic Island while you scroll.';
+      var cap = red ? 'At 10 minutes on Balanced, the timer turns red.' : 'The timer runs in the Dynamic Island while you scroll.';
       if (hCap.textContent !== cap) hCap.textContent = cap;
     };
     if (reduce) renderHero(604);
-    else (function tick(now) {
-      var sec = start + ((now - t0) / 1000) % (end - start);
-      renderHero(sec);
-      requestAnimationFrame(tick);
-    })(t0);
+    else {
+      var hRaf = 0, hT0 = 0, hElapsed = 0;
+      var tick = function (now) {
+        hElapsed = (now - hT0) / 1000;
+        renderHero(start + hElapsed % (end - start));
+        hRaf = requestAnimationFrame(tick);
+      };
+      whileVisible(hero,
+        function () { hT0 = performance.now() - hElapsed * 1000; hRaf = requestAnimationFrame(tick); },
+        function () { cancelAnimationFrame(hRaf); });
+    }
   }
 
   /* ---------- mini island in "how it works" ---------- */
   var mini = $('miniIsland');
   if (mini && !reduce) {
-    var mt = 95;
-    setInterval(function () { mt = mt >= 600 ? 95 : mt + 1; $('miniT').textContent = fmt(mt); setRing(mini.querySelector('.ring'), mt / 600); }, 1000);
+    var mt = 95, mTimer = 0;
+    whileVisible(mini, function () {
+      mTimer = setInterval(function () { mt = mt >= 600 ? 95 : mt + 1; $('miniT').textContent = fmt(mt); setRing(mini.querySelector('.ring'), mt / 600); }, 1000);
+    }, function () { clearInterval(mTimer); });
   }
 
-  /* ---------- 5 / 10 / 20 demo ---------- */
-  var screen = $('demoScreen');
-  var demo = null;
-  if (screen) {
-    var range = $('dRange'), isl = $('dIsland'), ban = $('dBanner'), flash = $('dFlash');
-    var playBtn = $('dPlay'), playIc = $('dPlayIc'), stages = document.querySelectorAll('#stages li');
-    var SPEED = 75;                // simulated seconds per real second
-    var t = 0, playing = false, last = 0, holdUntil = 0, userTouched = false;
+  /* ---------- 5 / 10 / 20 demo: scroll position drives the clock ---------- */
+  var scrolly = $('scrolly');
+  if (scrolly) {
+    var D = { rem: 5, red: 10, alarm: 20 };          // always Balanced here
+    var AT = [0, 5, 10, 20], END = 25;               // minutes at the top of each beat, and at the end
+    var isl = $('dIsland'), ban = $('dBanner'), flash = $('dFlash'), read = $('dRead');
+    var beats = Array.prototype.slice.call(document.querySelectorAll('#stages li'));
+    var lastSec = -1, queued = false;
 
-    var maxSec = function () { return Math.max(25, (S.alarmOn ? S.alarm : S.red) + 5) * 60; };
-    var setPlaying = function (p) {
-      playing = p;
-      playBtn.setAttribute('aria-label', p ? 'Pause' : 'Play');
-      playIc.innerHTML = p ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
-      if (p) { last = performance.now(); if (t >= maxSec()) t = 0; requestAnimationFrame(loop); }
-    };
-    var drawTicks = function () {
-      var max = maxSec(), el = $('dTicks'), h = '';
-      var marks = [[S.rem, '#4fe3ff'], [S.red, '#ff4f58']];
-      if (S.alarmOn) marks.push([S.alarm, '#ff9a3d']);
-      marks.forEach(function (m) { h += '<span style="left:' + (m[0] * 60 / max * 100) + '%;color:' + m[1] + '">' + m[0] + '</span>'; });
-      el.innerHTML = h;
-      range.max = max;
-    };
-    var render = function () {
-      var min = t / 60, remS = S.rem * 60, redS = S.red * 60, alS = S.alarm * 60;
-      var isRed = t >= redS;
-      var alarmOn = S.alarmOn && t >= alS && t < alS + SPEED * 5;
+    var render = function (t) {
+      var remS = D.rem * 60, redS = D.red * 60, alS = D.alarm * 60;
+      var isRed = t >= redS, alarmOn = t >= alS;
       $('dTime').textContent = fmt(t);
+      read.textContent = fmt(t);
+      read.parentNode.classList.toggle('is-red', isRed);
       setRing(isl.querySelector('.ring'), ringFrac(t, redS));
       isl.classList.toggle('is-red', isRed);
       isl.classList.toggle('alarm', alarmOn);
       flash.classList.toggle('on', alarmOn);
       var k = Math.floor(t / remS);
-      var showBan = k >= 1 && (t - k * remS) < SPEED * 2.4 && !(S.alarmOn && k * remS === alS) && !alarmOn;
+      var showBan = k >= 1 && (t - k * remS) < 180 && !alarmOn;
       if (showBan) {
-        var n = k * S.rem;
+        var n = k * D.rem;
         $('dBannerT').textContent = n + ' minutes';
         $('dBannerB').textContent = 'You’ve been in the app for ' + n + ' minutes.';
       }
       ban.classList.toggle('show', showBan);
-      range.value = Math.round(t);
-      $('dRead').textContent = Math.floor(min) + ' min';
-      var cur = 0;
-      stages.forEach(function (li, i) {
-        var key = li.dataset.k, at = key ? S[key] : 0;
-        if (key === 'alarm' && !S.alarmOn) return;
-        if (min >= at) cur = i;
-      });
-      stages.forEach(function (li, i) { li.classList.toggle('on', i === cur); });
     };
-    var loop = function (now) {
-      if (!playing) return;
-      var dt = (now - last) / 1000; last = now;
-      if (now < holdUntil) { requestAnimationFrame(loop); return; }
-      t += dt * SPEED;
-      if (t >= maxSec()) {
-        t = maxSec(); render();
-        if (userTouched) { setPlaying(false); return; }
-        holdUntil = now + 1500; t = 0;
+    /* Progress through the tall .scrolly while its stage is pinned. Each beat
+       gets an equal share of the scroll, and the clock holds at the end. */
+    var SHARE = 0.22, stage = scrolly.querySelector('.stage'), bar = $('dProg'), cur = -1;
+    var update = function () {
+      queued = false;
+      var r = scrolly.getBoundingClientRect();
+      var top = parseFloat(getComputedStyle(stage).top) || 0;
+      var run = r.height - stage.offsetHeight;
+      var p = run > 0 ? Math.min(1, Math.max(0, (top - r.top) / run)) : 0;
+      var i = Math.min(AT.length - 1, Math.floor(p / SHARE));
+      var next = i + 1 < AT.length ? AT[i + 1] : END;
+      var min = p >= SHARE * AT.length ? END : AT[i] + (next - AT[i]) * (p / SHARE - i);
+      var active = 0;
+      AT.forEach(function (at, j) { if (min >= at) active = j; });
+      if (active !== cur) {
+        cur = active;
+        beats.forEach(function (li, j) { li.classList.toggle('on', j === cur); li.setAttribute('aria-hidden', String(j !== cur)); });
       }
-      render();
-      requestAnimationFrame(loop);
+      bar.style.left = (min / END * 100) + '%';
+      var sec = Math.round(min * 60);
+      if (sec !== lastSec) { lastSec = sec; render(sec); }
     };
-    playBtn.addEventListener('click', function () { userTouched = true; setPlaying(!playing); });
-    range.addEventListener('input', function () { userTouched = true; t = +range.value; if (playing) setPlaying(false); render(); });
-    stages.forEach(function (li) {
-      li.querySelector('button').addEventListener('click', function () {
-        userTouched = true;
-        var key = li.dataset.k; t = (key ? S[key] : 0) * 60 + 1; render();
-        if (!playing) setPlaying(true);
-      });
-    });
-    drawTicks(); render();
-    if (!reduce && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting && !userTouched && !playing) setPlaying(true);
-          if (!e.isIntersecting && playing && !userTouched) setPlaying(false);
-        });
-      }, { threshold: 0.35 }).observe(screen);
-    }
-    demo = { refresh: function () { drawTicks(); if (t > maxSec()) t = maxSec(); render(); } };
+    var queue = function () { if (!queued) { queued = true; requestAnimationFrame(update); } };
+    addEventListener('scroll', queue, { passive: true });
+    addEventListener('resize', queue);
+    update();
   }
+
+  /* ---------- preview settings: Mild / Balanced / Strict ---------- */
+  var sync = function () {
+    if (!$('oRem')) return;
+    $('oRem').textContent = 'every ' + S.rem + ' min';
+    $('oRed').textContent = S.red + ' min';
+    $('oAlarm').textContent = S.alarmOn ? S.alarm + ' min' : 'Off';
+    $('oAlarmOn').setAttribute('aria-checked', String(S.alarmOn));
+  };
+  var presetGroups = document.querySelectorAll('[data-presets]');
+  var setPreset = function (p) {
+    var v = PRESETS[p];
+    S.preset = p; S.rem = v[0]; S.red = v[1]; S.alarm = v[2];
+    presetGroups.forEach(function (g) {
+      g.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-checked', String(b.dataset.p === p)); });
+    });
+    sync();
+  };
+  presetGroups.forEach(function (g) {
+    g.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () { setPreset(b.dataset.p); });
+    });
+  });
 
   /* ---------- app preview ---------- */
   var app = $('app');
@@ -154,6 +183,14 @@
       drawBars();
     };
     drawTotals();
+
+    var tabs = app.querySelectorAll('[role=tab]');
+    var showTab = function (id) {
+      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === id)); });
+      $('pOverview').hidden = id !== 'pOverview';
+      $('pSettings').hidden = id !== 'pSettings';
+    };
+    tabs.forEach(function (b) { b.addEventListener('click', function () { showTab(b.dataset.tab); }); });
 
     var sess = null, raf = 0, openBtn = $('pOpen');
     var drawSession = function () {
@@ -189,48 +226,33 @@
     openBtn.addEventListener('click', function () { sess ? stopSession() : startSession(); });
     $('pStop').addEventListener('click', stopSession);
 
-    var tabs = app.querySelectorAll('[role=tab]');
-    var showTab = function (id) {
-      tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === id)); });
-      $('pOverview').hidden = id !== 'pOverview';
-      $('pSettings').hidden = id !== 'pSettings';
-    };
-    tabs.forEach(function (b) { b.addEventListener('click', function () { showTab(b.dataset.tab); }); });
-
-    var PRESETS = { mild: [10, 20, 30], balanced: [5, 10, 20], strict: [2, 5, 10] };
-    var syncSettings = function () {
-      $('oRem').textContent = 'every ' + S.rem + ' min';
-      $('oRed').textContent = S.red + ' min';
-      $('oAlarm').textContent = S.alarmOn ? S.alarm + ' min' : 'Off';
-      $('oAlarmOn').setAttribute('aria-checked', String(S.alarmOn));
-      document.querySelectorAll('[data-v]').forEach(function (el) {
-        var v = S[el.dataset.v];
-        if (el.classList.contains('m')) el.innerHTML = v + '<small>min</small>'; else el.textContent = v;
-      });
-      var q = document.querySelector('#stages q');
-      if (q) q.textContent = 'You’ve been in the app for ' + S.rem + ' minutes.';
-      var al = document.querySelector('#stages li[data-k=alarm]');
-      if (al) al.style.display = S.alarmOn ? '' : 'none';
-      var name = { mild: 'Mild', balanced: 'Balanced', strict: 'Strict' }[S.preset];
-      var lead = document.querySelector('#demo .head p:last-child');
-      if (lead) lead.textContent = 'Press play, or drag the slider. This is the ' + name + ' setting, sped up.';
-      if (demo) demo.refresh();
-    };
-    var radios = function (group, attr, val) {
-      group.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-checked', String(b.dataset[attr] === val)); });
-    };
-    S.preset = 'balanced';
-    $('pPreset').querySelectorAll('button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        var v = PRESETS[b.dataset.p]; S.preset = b.dataset.p;
-        S.rem = v[0]; S.red = v[1]; S.alarm = v[2];
-        radios($('pPreset'), 'p', b.dataset.p); syncSettings();
-      });
-    });
     var NOTES = { shared: 'One timer for all your connected apps. Switch apps and it keeps counting.', perApp: 'Each connected app gets its own timer and counts on its own.' };
     $('pMode').querySelectorAll('button').forEach(function (b) {
-      b.addEventListener('click', function () { radios($('pMode'), 'm', b.dataset.m); $('pModeNote').textContent = NOTES[b.dataset.m]; });
+      b.addEventListener('click', function () {
+        $('pMode').querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-checked', String(o === b)); });
+        $('pModeNote').textContent = NOTES[b.dataset.m];
+      });
     });
-    $('oAlarmOn').addEventListener('click', function () { S.alarmOn = !S.alarmOn; syncSettings(); });
+    $('oAlarmOn').addEventListener('click', function () { S.alarmOn = !S.alarmOn; sync(); });
+  }
+
+  /* ---------- screenshot gallery buttons ---------- */
+  var gal = $('gallery');
+  if (gal && $('gPrev')) {
+    var prev = $('gPrev'), next = $('gNext');
+    var page = function (dir) {
+      var f = gal.querySelector('figure');
+      var w = f ? f.getBoundingClientRect().width + 18 : 260;
+      gal.scrollBy({ left: dir * w * Math.max(1, Math.floor(gal.clientWidth / w) - 1), behavior: reduce ? 'auto' : 'smooth' });
+    };
+    var upd = function () {
+      prev.disabled = gal.scrollLeft < 4;
+      next.disabled = gal.scrollLeft + gal.clientWidth > gal.scrollWidth - 4;
+    };
+    prev.addEventListener('click', function () { page(-1); });
+    next.addEventListener('click', function () { page(1); });
+    gal.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    upd();
   }
 })();
