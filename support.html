@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Support · Notice – Mindful Screen Time</title>
+<meta name="description" content="Help with setting up Notice, permissions, troubleshooting and deleting your data. Contact Noticemindfullscreentime@gmail.com.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Notice – Mindful Screen Time">
+<meta property="og:title" content="Support · Notice – Mindful Screen Time">
+<meta property="og:description" content="Help with setting up Notice, permissions, troubleshooting and deleting your data. Contact Noticemindfullscreentime@gmail.com.">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon-512.png" alt="" width="30" height="30"><span>Notice</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="hide-sm" href="index.html#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html" aria-current="page">Support</a>
+      <a class="get" href="https://apps.apple.com/app/id6794823541">Get the app</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="doc">
+<div class="wrap">
+<p class="label c">Support</p>
+<h1>Help with Notice</h1>
+<p class="lead" style="max-width:none">Answers to the questions people ask most. If yours isn’t here, email and you’ll get a reply from the person who makes the app.</p>
+<div class="contact">
+  <div><div class="label" style="margin-bottom:4px">Email support</div><a class="email" href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Noticemindfullscreentime@gmail.com</a></div>
+  <a class="btn" href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Write an email</a>
+</div>
+<p class="hint muted" style="font-size:15px">It helps to include your iPhone model, iOS version and the Notice version (shown in Notice’s Settings).</p>
+<ul class="toc">
+  <li><a href="#setup">Setup</a></li><li><a href="#permissions">Permissions</a></li><li><a href="#trouble">Troubleshooting</a></li><li><a href="#data">Your data</a></li><li><a href="#cancel">Cancel or delete</a></li>
+</ul>
+
+<h2 id="setup">Setup</h2>
+<h3>How do I connect an app?</h3>
+<p>Notice connects through Apple’s Shortcuts app with a ready-made shortcut and one Shortcuts automation that runs it when you open an app you chose. Open Notice and follow the short picture guide in onboarding. You can add more apps anytime.</p>
+<h3>Why doesn’t Notice just see which app I’m using?</h3>
+<p>iOS doesn’t let one app watch when other apps open or close. The Shortcuts automation is how Notice gets told, and the choice of apps stays with you. Notice only knows the apps you connect.</p>
+<h3>Where does the timer appear?</h3>
+<p>At the top of the screen in the Dynamic Island on iPhone 14 Pro and later, and on the Lock Screen on other models.</p>
+<h3>Which iOS version do I need?</h3>
+<p>iOS 18.2 or later. The hard-limit alarm needs iOS 26.1 or later; on older versions everything else works, without the alarm.</p>
+
+<h3>Is Notice on Android?</h3>
+<p>Not yet. It’s coming soon to Google Play, for Android 8.0 and later. This page covers the iPhone app.</p>
+
+<h2 id="permissions">Permissions</h2>
+<p>Notice doesn’t use Apple’s Screen Time or Family Controls APIs and doesn’t ask for access to your Screen Time data. It uses:</p>
+<ul>
+<li><b>Notifications</b>, for the nudges while you’re in a connected app (every 5 minutes on Balanced).</li>
+<li><b>Alarms</b>, only if you want the hard limit alarm (iOS 26.1 or later). This lets the alarm break through Silent Mode and Focus. Notice shows this permission in its Settings with one tap to turn it on, and tells you if an alarm couldn’t be scheduled.</li>
+<li><b>Live Activities</b>, so the timer can show in the Dynamic Island and on the Lock Screen.</li>
+</ul>
+<p class="note">You can change any of these later in the iPhone Settings app under <b>Apps › Notice</b>.</p>
+
+<h2 id="trouble">Troubleshooting</h2>
+<h3>The timer doesn’t start when I open an app</h3>
+<ul>
+<li>Open the Shortcuts app, go to <b>Automation</b>, and check that the Notice automation exists, is turned on and includes that app.</li>
+<li>Make sure the automation is set to run immediately, so iOS doesn’t ask for confirmation every time.</li>
+<li>Check that the Notice shortcut is still in your Shortcuts library. If not, add it again from the guide in Notice.</li>
+<li>Check that Live Activities are allowed for Notice in Settings › Apps › Notice.</li>
+</ul>
+<h3>I don’t get reminders</h3>
+<p>Check that notifications are allowed for Notice in Settings › Apps › Notice › Notifications, and that a Focus mode isn’t silencing them.</p>
+<h3>The alarm didn’t go off</h3>
+<p>The alarm needs iOS 26.1 or later and its own permission. Open Notice’s Settings: if the alarm permission is off, it’s shown there with a button to turn it on. Notice also tells you if an alarm couldn’t be scheduled.</p>
+<h3>Reminders come too often, or not often enough</h3>
+<p>Open Notice’s Settings and pick Mild, Balanced or Strict. Balanced reminds you every 5 minutes, turns red at 10 and sounds the alarm at 20; Mild is 10, 20 and 30; Strict is 2, 5 and 10. The alarm can be switched off.</p>
+<h3>The timer keeps counting when I switch apps</h3>
+<p>That’s the shared timer: one count for all your connected apps. In Settings under Count time you can switch to a separate timer for each app.</p>
+
+<h2 id="data">Your data</h2>
+<p>There’s no account. Notice keeps the names of the apps you connected, your sessions from the last 120 days and a small log of Shortcuts runs, all on your iPhone. The app has no network code and no analytics, so nothing is sent anywhere. If you send feedback, it goes through your own Mail app. The App Store privacy label for Notice is “Data Not Collected”. The full details are in the <a href="privacy.html">privacy policy</a>.</p>
+
+<h2 id="cancel">Cancel, stop tracking or delete your data</h2>
+<h3>Is there a subscription to cancel?</h3>
+<p>No. Notice is free and has no account, so there’s nothing to cancel or sign out of.</p>
+<h3>Stop tracking one app</h3>
+<p>In the Shortcuts app, open <b>Automation</b>, edit the Notice automation and remove that app (or turn the automation off to stop all of them).</p>
+<h3>Delete all your data</h3>
+<p>Delete the Notice app from your iPhone (touch and hold the icon, then <b>Remove App › Delete App</b>). That removes everything Notice stored on the device. Then delete the Notice automation and shortcut in Shortcuts. We hold no copy of your data, so there’s nothing to request from us.</p>
+
+<h2>Still stuck?</h2>
+<p>Email <a href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Noticemindfullscreentime@gmail.com</a>. Bug reports and ideas are welcome.</p>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Notice – Mindful Screen Time</span>
+    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:Noticemindfullscreentime@gmail.com">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a></nav>
+  </div>
+</footer>
+</body>
+</html>

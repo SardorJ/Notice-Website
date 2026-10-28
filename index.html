@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notice – Mindful Screen Time · No blocking. Just awareness.</title>
+<meta name="description" content="No blocking. Just awareness. Notice shows your screen time live in the Dynamic Island while you're still in the app. Free, no account, and nothing leaves your iPhone.">
+<meta name="theme-color" content="#000000">
+<meta name="apple-itunes-app" content="app-id=6794823541">
+<!-- Open Graph. After deploying, change og:image and og:url to absolute URLs on your domain. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Notice – Mindful Screen Time">
+<meta property="og:title" content="Notice – Mindful Screen Time">
+<meta property="og:description" content="No blocking. Just awareness. A calm live timer in the Dynamic Island. Free, no account, nothing leaves your iPhone.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="./">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notice – Mindful Screen Time">
+<meta name="twitter:description" content="No blocking. Just awareness. A calm live timer in the Dynamic Island. Free, no account.">
+<meta name="twitter:image" content="assets/og-image.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Notice – Mindful Screen Time","operatingSystem":"iOS","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0"},"downloadUrl":"https://apps.apple.com/app/id6794823541","image":"assets/icon-512.png"}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/icon-512.png" alt="" width="30" height="30"><span>Notice</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#faq">FAQ</a>
+      <a href="support.html">Support</a>
+      <a class="get" href="https://apps.apple.com/app/id6794823541">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero hero-c" aria-labelledby="h-hero">
+  <svg class="flow" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path id="flowPath" d="M-20 250 C 160 236, 230 170, 330 160 S 520 150, 600 150 L 840 150 C 960 150, 980 96, 1060 92 S 1180 122, 1260 104 S 1400 70, 1460 52"/></svg>
+  <div class="wrap">
+    <div class="stage-hero" id="heroStage" aria-hidden="true">
+      <div class="halo"></div>
+      <div class="big-island">
+        <svg class="ring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15"/><circle class="prog" cx="18" cy="18" r="15" pathLength="100" stroke-dasharray="0 100"/></svg>
+        <span class="t" id="heroTime">9:52</span>
+      </div>
+      <p class="hero-cap" id="heroCap">The timer runs in the Dynamic Island while you scroll.</p>
+    </div>
+    <p class="eyebrow"><img src="assets/icon-512.png" alt="" width="28" height="28">Notice · Mindful screen time</p>
+    <h1 id="h-hero">No blocking. <span class="acc">Just awareness.</span></h1>
+    <p class="lead">A calm live timer, right where you’re scrolling. Notice shows how long you’ve been in an app while you’re still in it, so you can decide for yourself when it’s enough.</p>
+    <div class="cta">
+      <a class="badge" href="https://apps.apple.com/app/id6794823541" aria-label="Download Notice on the App Store"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+    </div>
+    <ul class="facts"><li>Free on the App Store</li><li>No account</li><li>iOS 18.2 and later</li></ul>
+  </div>
+</section>
+
+<!-- 5 / 10 / 20 DEMO -->
+<section id="demo" aria-labelledby="h-demo">
+  <div class="wrap">
+    <div class="head">
+      <p class="label c">See time pass. Live.</p>
+      <h2 id="h-demo">A nudge, then red, then an alarm if you want one.</h2>
+      <p>Press play, or drag the slider. This is the Balanced setting, sped up.</p>
+    </div>
+    <div class="demo">
+      <div class="phone-col">
+        <div class="phone" aria-label="Simulated iPhone showing Notice over a feed">
+          <div class="screen" id="demoScreen">
+            <img class="feed" src="assets/demo-feed-photos.jpg" alt="A scrolling photo feed on iPhone" width="880" height="1912">
+            <div class="u alarm-flash" id="dFlash"></div>
+            <div class="u banner" id="dBanner" role="status" aria-live="polite">
+              <img src="assets/icon-512.png" alt="">
+              <div class="bt"><b id="dBannerT">5 minutes</b><span id="dBannerB">You’ve been in the app for 5 minutes.</span></div>
+              <i>now</i>
+            </div>
+            <div class="u island" id="dIsland">
+              <svg class="ring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="14"/><circle class="prog" cx="18" cy="18" r="14" pathLength="100" stroke-dasharray="0 100"/></svg>
+              <span class="t" id="dTime">0:00</span>
+              <div class="alarm-in">
+                <svg class="alarm-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="#ff4f58"/><path d="M12 9v4.5h3" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M3.5 6.5 6.5 3.5M20.5 6.5 17.5 3.5" stroke="#ff4f58" stroke-width="2.4" stroke-linecap="round"/></svg>
+                <div class="alarm-tx"><small>Notice</small><b>You’ve been here a while</b></div>
+                <span class="alarm-x">✕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="play" id="dPlay" aria-label="Play"><svg viewBox="0 0 24 24" id="dPlayIc"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+          <div class="scrub">
+            <label class="sr" for="dRange">Minutes in the app</label>
+            <input type="range" id="dRange" min="0" max="1500" step="1" value="0">
+            <div class="ticks" id="dTicks"></div>
+          </div>
+        </div>
+        <p class="clock-read"><span class="num" id="dRead">0 min</span> in a connected app</p>
+      </div>
+      <div>
+        <ol class="stages" id="stages">
+          <li data-at="0"><button><span class="m">0<small>min</small></span><span><h3>The timer starts</h3><p>Open an app you connected and a small timer appears at the top of the screen. Leave the app and it pauses.</p></span></button></li>
+          <li data-at="5" data-k="rem"><button><span class="m" data-v="rem">5<small>min</small></span><span><h3>A nudge</h3><p>A notification every <span data-v="rem">5</span> minutes: <q>You’ve been in the app for 5 minutes.</q></p></span></button></li>
+          <li data-at="10" data-k="red" class="r"><button><span class="m" data-v="red">10<small>min</small></span><span><h3>It turns red when you linger</h3><p>When you reach your limit, the timer turns red so you see it at a glance.</p></span></button></li>
+          <li data-at="20" data-k="alarm" class="r"><button><span class="m" data-v="alarm">20<small>min</small></span><span><h3>Need a firmer reminder?</h3><p>An optional hard limit with an alarm that breaks through Silent Mode and Focus. Turn it off anytime. Needs iOS 26.1 or later.</p></span></button></li>
+        </ol>
+        <p class="fine">These are the Balanced times. Mild and Strict move them; try it in the preview further down. On iPhone 14 Pro and later the timer sits in the Dynamic Island; on other models it shows on the Lock Screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="alt" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="head">
+      <p class="label c">How it works</p>
+      <h2 id="h-how">Connect an app once. Then it runs by itself.</h2>
+      <p>iPhone doesn’t let one app watch another, so Notice connects through Apple’s Shortcuts app: a ready-made shortcut and one automation.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div><h3>Add the ready-made shortcut</h3><p>Notice gives you the shortcut and a short picture guide, right in onboarding.</p></div>
+        <div class="vis" aria-hidden="true">
+          <div class="sc"><span class="ic" style="background:#000;border:1px solid #333"><img src="assets/icon-512.png" alt="" style="width:28px;border-radius:7px"></span><span>Notice timer<small>Shortcut · ready-made</small></span></div>
+          <span class="arrow">+</span>
+          <div class="sc add"><span>Add Shortcut</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div><h3>Make one automation</h3><p>In Shortcuts, one automation runs it when you open an app you chose. You can add more apps anytime.</p></div>
+        <div class="vis" aria-hidden="true">
+          <div class="sc"><span class="ics"><span class="ic" style="background:#2f7d84">A</span><span class="ic" style="background:#3a2412;color:#ff9a3d">B</span><span class="ic" style="background:#16343a;color:#4fe3ff">C</span></span><span>When an app you chose<small>is opened</small></span></div>
+          <span class="arrow">↓</span>
+          <div class="sc"><span class="ic" style="background:#000;border:1px solid #333"><img src="assets/icon-512.png" alt="" style="width:28px;border-radius:7px"></span><span>Run Notice timer<small>Shortcut</small></span></div>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <div><h3>Then it’s automatic</h3><p>Open a connected app and the timer starts counting. Leave, and it pauses.</p></div>
+        <div class="vis" aria-hidden="true">
+          <div class="mini-island" id="miniIsland"><svg class="ring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="14" style="stroke-width:4"/><circle class="prog" cx="18" cy="18" r="14" pathLength="100" stroke-dasharray="20 100" style="stroke-width:4"/></svg><span class="t" id="miniT">2:00</span></div>
+          <p class="hint" style="text-align:center;margin-top:6px">Live, at the top of the screen</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP PREVIEW -->
+<section id="inside" aria-labelledby="h-inside">
+  <div class="wrap">
+    <div class="preview">
+      <div>
+        <p class="label c">Inside the app</p>
+        <h2 id="h-inside">Small numbers, not a report card.</h2>
+        <p class="lead">Notice keeps today’s totals for the apps you connected: time spent, number of sessions and your longest session. Tap through the preview.</p>
+        <ul class="bullets">
+          <li>Start a session and watch it count. Stop it and today’s totals update.</li>
+          <li>Open Settings and pick Mild, Balanced or Strict. The demo above follows your choice.</li>
+          <li>Count time your way: one shared timer for all apps, or a separate timer for each app.</li>
+        </ul>
+        <div class="try">
+          <button class="primary" id="pOpen" aria-pressed="false">▶&nbsp; Open a connected app</button>
+          <p class="hint">The preview runs 20× faster than real time and uses sample data. It is a web recreation, not the app itself.</p>
+        </div>
+      </div>
+      <div class="phone" aria-label="Interactive preview of the Notice app">
+        <div class="screen">
+          <div class="app" id="app">
+            <div class="sb"><span class="num">9:41</span><span class="di" id="pDI"><svg class="ring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="14" style="stroke-width:4"/><circle class="prog" cx="18" cy="18" r="14" pathLength="100" stroke-dasharray="0 100" style="stroke-width:4"/></svg><span class="t" id="pDIt">0:00</span></span><span aria-hidden="true">▮▮▮</span></div>
+
+            <div class="body" id="pOverview" role="tabpanel" aria-label="Overview">
+              <h4>Notice</h4>
+              <p class="sub">Mindful screen time</p>
+              <div class="card" id="pReady"><div class="row"><span class="chk">✓</span><b>Ready</b></div></div>
+              <div class="card session" id="pSession" hidden>
+                <div class="cap">Current session</div>
+                <div class="big" id="pSessT">0:00</div>
+                <div class="cap" id="pSessNote">Turns red at 10:00</div>
+                <button class="stopbtn" id="pStop">Stop session</button>
+              </div>
+              <div class="card">
+                <div class="cap">Connected apps · today</div>
+                <div class="big" id="pTotal">42<small>min</small></div>
+                <div class="bars" id="pBars"></div>
+              </div>
+              <div class="grid2">
+                <div class="card"><div class="big" id="pCount" style="font-size:calc(var(--w)*.08)">4</div><div class="cap">Sessions</div></div>
+                <div class="card"><div class="big" id="pLong" style="font-size:calc(var(--w)*.08)">18<small>min</small></div><div class="cap">Longest</div></div>
+              </div>
+              <div class="sample">SAMPLE DATA</div>
+              <div class="privacy-line">🔒 Stays on this iPhone. No account.</div>
+            </div>
+
+            <div class="body" id="pSettings" role="tabpanel" aria-label="Settings" hidden>
+              <h4 style="margin-bottom:calc(var(--w)*.03)">Settings</h4>
+              <div class="seclabel">How strict</div>
+              <div class="seg" role="radiogroup" aria-label="Preset" id="pPreset">
+                <button role="radio" aria-checked="false" data-p="mild">Mild</button><button role="radio" aria-checked="true" data-p="balanced">Balanced</button><button role="radio" aria-checked="false" data-p="strict">Strict</button>
+              </div>
+              <div class="card glance" style="padding-top:0;padding-bottom:0">
+                <div class="set"><span class="si" style="background:#16343a;color:var(--accent)">🔔</span><span class="sl">Reminder<small>A notification while you’re in the app</small></span><output id="oRem">every 5 min</output></div>
+                <div class="set"><span class="si" style="background:#3a1512;color:#ff6a5e">⚑</span><span class="sl">Limit<small>The timer turns red</small></span><output id="oRed">10 min</output></div>
+                <div class="set"><span class="si" style="background:#3a2412;color:#ff9a3d">⏰</span><span class="sl">Hard limit alarm<small>Breaks through Silent Mode and Focus</small></span><output id="oAlarm">20 min</output><button class="tog" id="oAlarmOn" role="switch" aria-checked="true" aria-label="Hard limit alarm"></button></div>
+              </div>
+              <div class="seclabel">Count time</div>
+              <div class="seg" role="radiogroup" aria-label="Count time" id="pMode">
+                <button role="radio" aria-checked="true" data-m="shared">One shared timer</button><button role="radio" aria-checked="false" data-m="perApp">One per app</button>
+              </div>
+              <p class="segnote" id="pModeNote">One timer for all your connected apps. Switch apps and it keeps counting.</p>
+              <div class="seclabel">Help</div>
+              <div class="card"><div class="row"><span class="si" style="width:calc(var(--w)*.075);height:calc(var(--w)*.075);border-radius:8px;background:#16343a;display:grid;place-items:center">?</span><span class="sl">Shortcuts setup guide<small style="display:block;color:rgba(255,255,255,.5);font-size:calc(var(--w)*.03)">Step-by-step pictures for connecting apps</small></span></div></div>
+            </div>
+
+            <div class="tabs" role="tablist">
+              <button role="tab" aria-selected="true" data-tab="pOverview"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="4" height="9" rx="1"/><rect x="10" y="6" width="4" height="14" rx="1"/><rect x="16" y="9" width="4" height="11" rx="1"/></svg>Overview</button>
+              <button role="tab" aria-selected="false" data-tab="pSettings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></g></svg>Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band alt" aria-labelledby="h-band">
+  <div class="wrap">
+    <p class="label c">No guilt, no blocking</p>
+    <h2 id="h-band">Neither helps <span class="acc">in the moment.</span></h2>
+    <p>Most screen time tools either block you before you open an app, or show you a chart the next day. Notice never stops you from using an app. It just makes the time visible.</p>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy" aria-labelledby="h-priv">
+  <div class="wrap">
+    <div class="head">
+      <p class="label c">Privacy</p>
+      <h2 id="h-priv">Your data <span class="acc">stays yours.</span></h2>
+      <p>No account, nothing leaves your iPhone, Notice only knows the apps you connect. The App Store privacy label says <b style="color:var(--text)">Data Not Collected</b>. <a href="privacy.html">Read the privacy policy</a>.</p>
+    </div>
+    <div class="priv">
+      <div class="pcard"><span class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M3 3l18 18"/></svg></span><h3>No account</h3><p>No sign-up and no login. Open the app and connect an app.</p></div>
+      <div class="pcard"><span class="pi"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></span><h3>Nothing leaves your iPhone</h3><p>Your stats are stored on your iPhone and nothing is sent anywhere. No analytics, no ads. Deleting the app deletes them.</p></div>
+      <div class="pcard"><span class="pi"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h3>Only the apps you connect</h3><p>You choose them in Shortcuts. Notice only knows the apps you connect.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="alt" aria-labelledby="h-shots">
+  <div class="wrap">
+    <div class="head">
+      <p class="label c">On the App Store</p>
+      <h2 id="h-shots">Screenshots</h2>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="App Store screenshots, scroll sideways">
+      <figure><img loading="lazy" src="assets/screenshots/01-see-time-pass-live.jpg" alt="App Store screenshot: See time pass. Live." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/02-small-insights.jpg" alt="App Store screenshot: Small insights." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/03-gentle-nudge.jpg" alt="App Store screenshot: A gentle nudge." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/04-it-turns-red.jpg" alt="App Store screenshot: It turns red when you linger." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/05-firmer-reminder.jpg" alt="App Store screenshot: Need a firmer reminder?" width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/06-no-blocking.jpg" alt="App Store screenshot: No blocking. Just awareness." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/07-make-it-yours.jpg" alt="App Store screenshot: Make it yours." width="600" height="1304"></figure>
+      <figure><img loading="lazy" src="assets/screenshots/08-your-data-stays-yours.jpg" alt="App Store screenshot: Your data stays yours." width="600" height="1304"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="head"><p class="label c">FAQ</p><h2 id="h-faq">Questions</h2></div>
+    <div class="faq">
+      <details><summary>Does Notice block apps?</summary><div><p>No. Notice never stops you from using an app. It shows the time, sends a nudge, and can sound an alarm if you turn that on. What you do next is up to you.</p></div></details>
+      <details><summary>How does Notice know when I open an app?</summary><div><p>Through Apple’s Shortcuts app. Notice gives you a ready-made shortcut, and one Shortcuts automation runs it when you open an app you chose. A short picture guide in the app walks you through it.</p></div></details>
+      <details><summary>Which iPhones does it work on?</summary><div><p>iOS 18.2 and later. The live timer appears in the Dynamic Island on iPhone 14 Pro and later, and on the Lock Screen on other models. The hard-limit alarm needs iOS 26.1 or later.</p></div></details>
+      <details><summary>What do Mild, Balanced and Strict change?</summary><div><p>How often you’re reminded, when the timer turns red, and when the alarm goes off. Balanced reminds you every 5 minutes, turns red at 10 and sounds the alarm at 20. Mild is 10, 20 and 30; Strict is 2, 5 and 10. The alarm can be turned off.</p></div></details>
+      <details><summary>One timer, or one per app?</summary><div><p>Your choice. With one shared timer, switching between connected apps keeps the same count going. With one per app, each app counts on its own.</p></div></details>
+      <details><summary>What does it cost? Do I need an account?</summary><div><p>Notice is free on the App Store, and there’s no account or sign-up.</p></div></details>
+      <details><summary>Is there an Android version?</summary><div><p>Coming soon to Google Play, for Android 8.0 and later. On Android the timer is a floating bubble you can move around, with an optional pill around the punch-hole camera, plus an ongoing notification with a Stop button. Privacy is the same: no account, no ads, and the app doesn’t even have internet permission.</p></div></details>
+      <details><summary>Which languages does it support?</summary><div><p>English, Swedish, Spanish, French, German, Portuguese, Simplified Chinese, Russian and Arabic.</p></div></details>
+      <details><summary>Something isn’t working.</summary><div><p>See the <a href="support.html">support page</a> or email <a href="mailto:Noticemindfullscreentime@gmail.com">Noticemindfullscreentime@gmail.com</a>.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final alt" aria-labelledby="h-final">
+  <div class="wrap">
+    <img class="app-icon" src="assets/icon-512.png" alt="" width="96" height="96">
+    <h2 id="h-final">Awareness first.</h2>
+    <p class="muted" style="margin:0 0 28px;font-size:18px">No account. No blocking. Just awareness. Free on the App Store.</p>
+    <div class="cta"><a class="badge" href="https://apps.apple.com/app/id6794823541" aria-label="Download Notice on the App Store"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a></div>
+    <p class="soon">Android: coming soon to Google Play.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Notice – Mindful Screen Time</span>
+    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:Noticemindfullscreentime@gmail.com">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a></nav>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

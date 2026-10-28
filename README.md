@@ -1,0 +1,38 @@
+# Notice – Mindful Screen Time · website
+
+The static website for [Notice – Mindful Screen Time](https://apps.apple.com/app/id6794823541), the iPhone app that shows a live timer while you're in an app. It's plain HTML, CSS and a little JavaScript, with no build step and no dependencies.
+
+## Pages
+
+| File | What it is |
+|:--|:--|
+| `index.html` | Landing page: Dynamic Island hero, the 5/10/20 demo, how setup works, a tap-through app preview, privacy, App Store screenshots and FAQ |
+| `privacy.html` | Privacy policy (same content as the 17 Oct 2026 policy) |
+| `support.html` | Support: contact, setup, permissions, troubleshooting, deleting data |
+| `terms.html` | Terms of use (**draft, needs review**) |
+| `404.html` | Not-found page (GitHub Pages and Netlify pick it up automatically) |
+| `styles.css`, `app.js` | Shared styles and the interactive demo/preview |
+| `assets/` | App icon, App Store badge, OG image, screenshots |
+| `.nojekyll` | Tells GitHub Pages to serve the files as they are |
+
+## Preview locally
+
+```sh
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+## Publish with GitHub Pages
+
+1. In this repository go to **Settings › Pages**.
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Pick the branch **main** and the folder **/ (root)**, then click **Save**.
+4. After a minute the site is live at `https://sardorj.github.io/Notice-Website/`. A custom domain can be added on the same page.
+
+This repository is private. GitHub Pages for private repositories needs a paid GitHub plan; on a free plan, make the repository public first.
+
+After publishing, change the `og:image` / `twitter:image` meta tags in each page to the full URL (for example `https://sardorj.github.io/Notice-Website/assets/og-image.png`) so link previews show the image. The 404 page uses root-relative links (`/styles.css`), which work on a custom domain. On the project URL `/Notice-Website/`, change them to `/Notice-Website/...`.
+
+## Contact
+
+Noticemindfullscreentime@gmail.com
