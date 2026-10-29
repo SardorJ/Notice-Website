@@ -59,7 +59,7 @@
       hT.textContent = fmt(sec);
       setRing(hRing, ringFrac(sec, 600));
       hero.classList.toggle('red', red);
-      var cap = red ? 'At 10 minutes on Balanced, the timer turns red.' : 'The timer runs in the Dynamic Island while you scroll.';
+      var cap = red ? 'At 10 minutes, the timer turns red.' : 'The timer runs in the Dynamic Island while you scroll.';
       if (hCap.textContent !== cap) hCap.textContent = cap;
     };
     if (reduce) renderHero(604);
