@@ -28,9 +28,9 @@ python3 -m http.server 8000
 1. In this repository go to **Settings › Pages**.
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
 3. Pick the branch **main** and the folder **/ (root)**, then click **Save**.
-4. After a minute the site is live at `https://sardorj.github.io/Notice-Website/`. A custom domain can be added on the same page.
+4. After a minute the site is live at `https://noticeapp.app/` (custom domain, set by the `CNAME` file; `sardorj.github.io/Notice-Website/` redirects there).
 
-Canonical links, `og:image`, `og:url`, the JSON-LD and `sitemap.xml` use absolute URLs on `https://sardorj.github.io/Notice-Website/`. If you move to a custom domain, search and replace that address in all files. The 404 page uses absolute links under `/Notice-Website/...` so it works at any depth on the project URL. If you move to a custom domain served from the root, change them back to `/...`.
+Canonical links, `og:image`, `og:url`, the JSON-LD and `sitemap.xml` use absolute URLs on `https://noticeapp.app/`. The 404 page uses root-relative links (`/...`).
 
 `sitemap.xml` can be submitted in Google Search Console. The FAQ answers on the landing page also appear in a `FAQPage` JSON-LD block in `index.html`; keep the two in sync when you edit a question.
 
