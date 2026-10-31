@@ -7,9 +7,9 @@ The static website for [Notice – Mindful Screen Time](https://apps.apple.com/a
 | File | What it is |
 |:--|:--|
 | `index.html` | Landing page: Dynamic Island hero, a scroll-driven 5/10/20 demo (Balanced), a before/during/after timeline, how setup works, a tap-through app preview, privacy, App Store screenshots and FAQ |
-| `privacy.html` | Privacy policy (same content as the 17 Oct 2026 policy) |
+| `privacy.html` | Privacy policy |
 | `support.html` | Support: contact, setup, permissions, troubleshooting, deleting data |
-| `terms.html` | Terms of use (**draft, needs review**) |
+| `terms.html` | Terms of use |
 | `404.html` | Not-found page (GitHub Pages and Netlify pick it up automatically) |
 | `styles.css`, `app.js` | Shared styles and the interactive demo/preview |
 | `assets/` | App icon, App Store badge, OG image, screenshots |
