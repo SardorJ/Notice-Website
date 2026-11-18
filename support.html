@@ -29,7 +29,7 @@
       <a class="hide-sm" href="index.html#how">How it works</a>
       <a href="privacy.html">Privacy</a>
       <a href="support.html" aria-current="page">Support</a>
-      <a class="get" href="https://apps.apple.com/app/id6794823541">Get the app</a>
+      <a class="get" href="index.html#download">Get the app</a>
     </nav>
   </div>
 </header>
@@ -42,25 +42,42 @@
   <div><div class="label" style="margin-bottom:4px">Email support</div><a class="email" href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Noticemindfullscreentime@gmail.com</a></div>
   <a class="btn" href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Write an email</a>
 </div>
-<p class="hint muted" style="font-size:15px">It helps to include your iPhone model, iOS version and the Notice version (shown in Notice’s Settings).</p>
+<p class="hint muted" style="font-size:15px">It helps to include your phone model, the iOS or Android version, and the Notice version (shown in Notice’s Settings).</p>
+<div class="cta" style="margin:22px 0 8px">
+  <a class="badge" href="https://apps.apple.com/app/id6794823541" aria-label="Download Notice on the App Store"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=app.notice" aria-label="Get Notice on Google Play"><img src="assets/google-play-badge.png" alt="Get it on Google Play" width="175" height="52"></a>
+</div>
 <ul class="toc">
   <li><a href="#setup">Setup</a></li><li><a href="#permissions">Permissions</a></li><li><a href="#trouble">Troubleshooting</a></li><li><a href="#data">Your data</a></li><li><a href="#cancel">Cancel or delete</a></li>
 </ul>
 
 <h2 id="setup">Setup</h2>
-<h3>How do I connect an app?</h3>
+<p>On iPhone, setup uses Shortcuts. On Android, you grant Usage access and Display over other apps.</p>
+<h3>How do I connect an app on iPhone?</h3>
 <p>Notice connects through Apple’s Shortcuts app with a ready-made shortcut and one Shortcuts automation that runs it when you open an app you chose. Open Notice and follow the short picture guide in onboarding. You can add more apps anytime.</p>
 <h3>Why doesn’t Notice just see which app I’m using?</h3>
 <p>iOS doesn’t let one app watch when other apps open or close. The Shortcuts automation is how Notice gets told, and the choice of apps stays with you. Notice only knows the apps you connect.</p>
-<h3>Where does the timer appear?</h3>
+<h3>Where does the timer appear on iPhone?</h3>
 <p>At the top of the screen in the Dynamic Island on iPhone 14 Pro and later, and on the Lock Screen on other models.</p>
 <h3>Which iOS version do I need?</h3>
 <p>iOS 18.2 or later. The hard-limit alarm needs iOS 26.1 or later; on older versions everything else works, without the alarm.</p>
 
-<h3>Is Notice on Android?</h3>
-<p>Not yet. It’s coming soon to Google Play, for Android 8.0 and later. This page covers the iPhone app.</p>
+<h3>How do I connect an app on Android?</h3>
+<p>Notice is on Google Play. Choose the apps you want. Nothing is preselected. Then grant Usage access and Display over other apps. Notice reads usage events on the phone to know when a connected app is in front. A silent “Notice is on” notification stays while Notice is watching, because Android requires it for a foreground service.</p>
+<h3>Where does the timer appear on Android?</h3>
+<p>A small floating timer appears over a connected app when that app is in front. The default is a draggable bubble: a capsule with the time and a progress ring, which snaps to either edge. You can switch to a Camera island, a pill around the front-camera hole. If the phone has no usable hole, it falls back to the bubble. Size is Small, Medium or Large, and you can set the opacity. The running timer is not shown on the lock screen.</p>
+<h3>What happens at a reminder, and past the limit?</h3>
+<p>The ring fills toward the next reminder. At each reminder a short quiet note shows the time in the app. Past the limit the timer turns coral and stays open, with Done for now or Continue. There is no snooze. An optional alarm runs on its own interval, can sound when the phone is quiet, and shows a full-screen cue.</p>
+<h3>Shared mode and per-app mode</h3>
+<p>On Android, Shared mode is the default: one clock for all connected apps. Per-app mode counts each app on its own. There are 5 minutes to come back into the same session, and the day resets at local midnight.</p>
+<h3>What does Home show on Android?</h3>
+<p>Today and Week, total time with a chart, Sessions, Longest, Time of day, time per app, and how often you chose Done for now.</p>
+<h3>Presets on Android</h3>
+<p>Balanced, Mild, Strict and Custom. Balanced starts with a reminder every 5 minutes, coral after 10, and an alarm every 20. Mild leaves the alarm off.</p>
+<p>Notice on Android is free, with no account, no ads and no in-app purchases. Nothing leaves your phone. The Android app is in English and Swedish.</p>
 
 <h2 id="permissions">Permissions</h2>
+<h3>On iPhone</h3>
 <p>Notice doesn’t use Apple’s Screen Time or Family Controls APIs and doesn’t ask for access to your Screen Time data. It uses:</p>
 <ul>
 <li><b>Notifications</b>, for the nudges while you’re in a connected app (every 5 minutes on Balanced).</li>
@@ -68,8 +85,15 @@
 <li><b>Live Activities</b>, so the timer can show in the Dynamic Island and on the Lock Screen.</li>
 </ul>
 <p class="note">You can change any of these later in the iPhone Settings app under <b>Apps › Notice</b>.</p>
+<h3>On Android</h3>
+<ul>
+<li><b>Usage access</b>, so Notice can read usage events on the phone and know when a connected app is in front.</li>
+<li><b>Display over other apps</b>, so the floating timer can appear over that app.</li>
+<li>A silent <b>Notice is on</b> notification while Notice is watching. Android requires this notification for a foreground service.</li>
+</ul>
 
 <h2 id="trouble">Troubleshooting</h2>
+<p>The checks in this first group are for iPhone.</p>
 <h3>The timer doesn’t start when I open an app</h3>
 <ul>
 <li>Open the Shortcuts app, go to <b>Automation</b>, and check that the Notice automation exists, is turned on and includes that app.</li>
@@ -82,20 +106,32 @@
 <h3>The alarm didn’t go off</h3>
 <p>The alarm needs iOS 26.1 or later and its own permission. Open Notice’s Settings: if the alarm permission is off, it’s shown there with a button to turn it on. Notice also tells you if an alarm couldn’t be scheduled.</p>
 <h3>Reminders come too often, or not often enough</h3>
-<p>Open Notice’s Settings and pick Mild, Balanced or Strict. Balanced reminds you every 5 minutes, turns red at 10 and sounds the alarm at 20; Mild is 10, 20 and 30; Strict is 2, 5 and 10. The alarm can be switched off.</p>
+<p>On iPhone, open Notice’s Settings and pick Mild, Balanced or Strict. Balanced reminds you every 5 minutes, turns red at 10 and sounds the alarm at 20; Mild is 10, 20 and 30; Strict is 2, 5 and 10. The alarm can be switched off. On Android, Balanced starts with a reminder every 5 minutes, coral after 10, and an alarm every 20. Mild leaves the alarm off. Strict and Custom are there too.</p>
 <h3>The timer keeps counting when I switch apps</h3>
-<p>That’s the shared timer: one count for all your connected apps. In Settings under Count time you can switch to a separate timer for each app.</p>
+<p>That’s the shared timer: one count for all your connected apps. In Settings under Count time you can switch to a separate timer for each app. On Android the same choice is Shared mode (the default) or Per-app mode.</p>
+<h3>On Android, the timer doesn’t appear</h3>
+<ul>
+<li>The app has to be one you chose. Nothing is preselected.</li>
+<li>Usage access and Display over other apps both need to be allowed.</li>
+<li>The floating timer shows while a connected app is in front. It is not shown on the lock screen.</li>
+<li>If Camera island is on and the phone has no usable front-camera hole, Notice uses the bubble instead.</li>
+</ul>
 
 <h2 id="data">Your data</h2>
-<p>There’s no account. Notice keeps the names of the apps you connected, your sessions from the last 120 days and a small log of Shortcuts runs, all on your iPhone. The app has no network code and no analytics, so nothing is sent anywhere. If you send feedback, it goes through your own Mail app. The App Store privacy label for Notice is “Data Not Collected”. The full details are in the <a href="privacy.html">privacy policy</a>.</p>
+<h3>On iPhone</h3>
+<p>There’s no account. Notice keeps the names of the apps you connected, your sessions from the last 120 days and a small log of Shortcuts runs, all on your iPhone. The app has no network code and no analytics, so nothing is sent anywhere. If you send feedback, it goes through your own Mail app. The App Store privacy label for Notice is “Data Not Collected”.</p>
+<h3>On Android</h3>
+<p>There’s no account. Notice keeps the apps you connected and your sessions and stats on the phone. Nothing leaves your phone. There are no ads and no in-app purchases. The full details are in the <a href="privacy.html">privacy policy</a>.</p>
 
 <h2 id="cancel">Cancel, stop tracking or delete your data</h2>
 <h3>Is there a subscription to cancel?</h3>
 <p>No. Notice is free and has no account, so there’s nothing to cancel or sign out of.</p>
-<h3>Stop tracking one app</h3>
+<h3>Stop tracking one app on iPhone</h3>
 <p>In the Shortcuts app, open <b>Automation</b>, edit the Notice automation and remove that app (or turn the automation off to stop all of them).</p>
+<h3>On Android</h3>
+<p>Notice only watches the apps you chose. Nothing is preselected. There is no account, no subscription and no in-app purchase to cancel.</p>
 <h3>Delete all your data</h3>
-<p>Delete the Notice app from your iPhone (touch and hold the icon, then <b>Remove App › Delete App</b>). That removes everything Notice stored on the device. Then delete the Notice automation and shortcut in Shortcuts. We hold no copy of your data, so there’s nothing to request from us.</p>
+<p>On iPhone, delete the Notice app (touch and hold the icon, then <b>Remove App › Delete App</b>). That removes everything Notice stored on the device. Then delete the Notice automation and shortcut in Shortcuts. On Android, delete the Notice app from your phone. We hold no copy of your data, so there’s nothing to request from us.</p>
 
 <h2>Still stuck?</h2>
 <p>Email <a href="mailto:Noticemindfullscreentime@gmail.com?subject=Notice%20support">Noticemindfullscreentime@gmail.com</a>. Bug reports and ideas are welcome.</p>
@@ -104,7 +140,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Notice – Mindful Screen Time</span>
-    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:Noticemindfullscreentime@gmail.com">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a></nav>
+    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:Noticemindfullscreentime@gmail.com">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a><a href="https://play.google.com/store/apps/details?id=app.notice">Google Play</a></nav>
   </div>
 </footer>
 <script data-goatcounter="https://noticeapp.goatcounter.com/count"
