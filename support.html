@@ -105,6 +105,23 @@
 <p>Check that notifications are allowed for Notice in Settings › Apps › Notice › Notifications, and that a Focus mode isn’t silencing them.</p>
 <h3>The alarm didn’t go off</h3>
 <p>The alarm needs iOS 26.1 or later and its own permission. Open Notice’s Settings: if the alarm permission is off, it’s shown there with a button to turn it on. Notice also tells you if an alarm couldn’t be scheduled.</p>
+<h3>iPhone: Why does the timer sometimes keep running after I lock my phone?</h3>
+<p>Notice uses iOS Shortcuts to see when you open and close apps. iOS doesn’t always report when the phone locks, and then the timer can act strangely. Here’s how to avoid it:</p>
+<ul>
+<li>Swipe home and wait a second before you lock. If you lock right away, iOS doesn’t have time to tell Notice the app closed, and the island and timer can stay on screen.</li>
+<li>Try not to lock your phone while you’re inside a chosen app. iOS doesn’t always count locking as closing the app, so the timer can keep running.</li>
+</ul>
+<p>This comes from how iOS is built, not from Notice. We’ve reported it to Apple.</p>
+<div class="note" lang="sv">
+<p class="label">På svenska</p>
+<p><b>Varför fortsätter timern ibland efter att jag låst telefonen?</b></p>
+<p>Notice använder iOS Genvägar för att se när du öppnar och stänger appar. iOS säger inte alltid till när telefonen låses, och då kan timern bete sig konstigt. Så här undviker du det:</p>
+<ul>
+<li>Svep hem och vänta en sekund innan du låser. Låser du direkt hinner iOS inte säga till Notice att appen stängdes, och ön och timern kan ligga kvar.</li>
+<li>Lås helst inte telefonen inne i en vald app. iOS räknar inte alltid en låsning som att appen stängs, så timern kan fortsätta gå.</li>
+</ul>
+<p>Det här beror på hur iOS är byggt, inte på Notice. Vi har rapporterat det till Apple.</p>
+</div>
 <h3>Reminders come too often, or not often enough</h3>
 <p>On iPhone, open Notice’s Settings and pick Mild, Balanced or Strict. Balanced reminds you every 5 minutes, turns red at 10 and sounds the alarm at 20; Mild is 10, 20 and 30; Strict is 2, 5 and 10. The alarm can be switched off. On Android, Balanced starts with a reminder every 5 minutes, coral after 10, and an alarm every 20. Mild leaves the alarm off. Strict and Custom are there too.</p>
 <h3>The timer keeps counting when I switch apps</h3>
