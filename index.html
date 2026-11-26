@@ -51,6 +51,7 @@
     <a class="brand" href="./"><img src="assets/icon-192.png" alt="" width="30" height="30"><span>Notice</span></a>
     <nav class="nav-links" aria-label="Main">
       <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#discover">Discover</a>
       <a class="hide-sm" href="#faq">FAQ</a>
       <a href="support.html">Support</a>
       <a class="get" href="#download">Get the app</a>
@@ -321,6 +322,51 @@
           <button class="primary" id="pOpen" type="button" aria-pressed="false">▶&nbsp; Open a connected app</button>
           <p class="hint">Runs 20× faster than real time, with sample data. A web recreation, not the app itself.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOVER -->
+<section id="discover" aria-labelledby="h-discover">
+  <div class="wrap discover">
+    <div class="head">
+      <p class="label c">Discover</p>
+      <p class="coming">Coming in the next update</p>
+      <h2 id="h-discover">Something to do <span class="acc">instead</span></h2>
+      <p>Tap the deck for a small idea you can do away from your screen, from one minute to fifteen.</p>
+      <p>The next update on iPhone and Android adds a Discover tab: 62 ideas in six categories.</p>
+      <ul class="discover-cats" aria-label="Categories">
+        <li>Get moving</li>
+        <li>With your hands</li>
+        <li>Learn a trick</li>
+        <li>Go explore</li>
+        <li>Reach out</li>
+        <li>Curious?</li>
+      </ul>
+    </div>
+    <div class="deck-col">
+      <div class="deck">
+        <div class="deck-stack">
+          <div class="deck-back l" aria-hidden="true"></div>
+          <div class="deck-back r" aria-hidden="true"></div>
+          <div class="deck-flip" id="discoverFlip">
+            <div class="deck-face" id="discoverCard" aria-live="polite" aria-atomic="true">
+              <p class="deck-time"><span class="num">4</span><span class="unit">min</span></p>
+              <p class="deck-cat">Get moving</p>
+              <p class="deck-title">Kitchen disco</p>
+              <p class="deck-text">Put on a song you can’t stand still to and dance all the way through. No one’s watching.</p>
+            </div>
+            <div class="deck-face back" aria-hidden="true">
+              <p class="deck-time"><span class="num">4</span><span class="unit">min</span></p>
+              <p class="deck-cat">Get moving</p>
+              <p class="deck-title">Kitchen disco</p>
+              <p class="deck-text">Put on a song you can’t stand still to and dance all the way through. No one’s watching.</p>
+            </div>
+          </div>
+        </div>
+        <button class="shuffle" id="discoverShuffle" type="button">Shuffle</button>
+        <p class="hint">The ideas live on your phone.<br>Nothing is sent.</p>
       </div>
     </div>
   </div>
