@@ -255,4 +255,62 @@
     window.addEventListener('resize', upd);
     upd();
   }
+
+  /* ---------- Discover deck: five example cards from the upcoming tab ---------- */
+  var shuffleBtn = $('discoverShuffle');
+  var flipEl = $('discoverFlip');
+  if (shuffleBtn && flipEl) {
+    var ideas = [
+      { min: '4', cat: 'Get moving', title: 'Kitchen disco', text: 'Put on a song you can\u2019t stand still to and dance all the way through. No one\u2019s watching.' },
+      { min: '2', cat: 'Get moving', title: 'The flamingo', text: 'Stand on one leg and count to 60. Switch legs. Harder: close your eyes.' },
+      { min: '5', cat: 'With your hands', title: 'Paper plane contest', text: 'Fold two different planes and see which one flies farthest.' },
+      { min: '1', cat: 'Get moving', title: 'Look far', text: 'Look at something far away for 20 seconds, three times. Your eyes will thank you.' },
+      { min: '2', cat: 'Learn a trick', title: 'Times 11', text: '11 \u00d7 43: 4 + 3 = 7, so 473. Try three numbers of your own.' }
+    ];
+    var faces = flipEl.querySelectorAll('.deck-face');
+    var frontFace = faces[0];
+    var backFace = faces[1];
+    var ideaIndex = 0;
+    var flipping = false;
+
+    var paintFace = function (face, idea) {
+      face.querySelector('.num').textContent = idea.min;
+      face.querySelector('.deck-cat').textContent = idea.cat;
+      face.querySelector('.deck-title').textContent = idea.title;
+      face.querySelector('.deck-text').textContent = idea.text;
+    };
+
+    var showIdea = function (index) {
+      ideaIndex = index;
+      paintFace(frontFace, ideas[ideaIndex]);
+    };
+
+    shuffleBtn.addEventListener('click', function () {
+      if (flipping) return;
+      var next = (ideaIndex + 1) % ideas.length;
+      if (reduce) { showIdea(next); return; }
+      paintFace(backFace, ideas[next]);
+      flipping = true;
+      var done = false;
+      var finish = function () {
+        if (done) return;
+        done = true;
+        showIdea(next);
+        flipEl.classList.add('is-instant');
+        flipEl.classList.remove('is-flipped');
+        void flipEl.offsetWidth;
+        flipEl.classList.remove('is-instant');
+        flipping = false;
+      };
+      var onEnd = function (e) {
+        if (e.target !== flipEl || e.propertyName !== 'transform') return;
+        flipEl.removeEventListener('transitionend', onEnd);
+        finish();
+      };
+      flipEl.addEventListener('transitionend', onEnd);
+      window.setTimeout(finish, 700);
+      void flipEl.offsetWidth;
+      flipEl.classList.add('is-flipped');
+    });
+  }
 })();
