@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy · Notice – Mindful Screen Time</title>
-<meta name="description" content="Notice stores data on your iPhone and on your Android phone, and does not send it anywhere. No account, no ads.">
+<meta name="description" content="Notice keeps your data on your device. On iPhone, icon lookup is sent to Apple, and the developer does not receive it. No account, no ads.">
 <meta name="theme-color" content="#000000">
 <meta name="openthis-verification" content="otv_19b017bdaae944f848840648b9af3dbc">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Notice – Mindful Screen Time">
 <meta property="og:title" content="Privacy Policy · Notice – Mindful Screen Time">
-<meta property="og:description" content="Notice stores data on your iPhone and on your Android phone, and does not send it anywhere. No account, no ads.">
+<meta property="og:description" content="Notice keeps your data on your device. On iPhone, icon lookup is sent to Apple, and the developer does not receive it. No account, no ads.">
 <link rel="canonical" href="https://noticeapp.app/privacy.html">
 <meta property="og:image" content="https://noticeapp.app/assets/og-image.png">
 <meta property="og:url" content="https://noticeapp.app/privacy.html">
@@ -37,20 +37,21 @@
 <div class="wrap">
 <p class="label c">Privacy Policy</p>
 <h1>Privacy Policy for Notice</h1>
-<p class="updated">Last updated: November 18, 2026</p>
-<p>Notice – Mindful Screen Time is developed and owned by Sardor Jurayev, who is responsible for this policy. On the App Store it is distributed through Djamshid Jurayev's developer account. It is also on Google Play. This policy explains what the iPhone and Android apps store and how this website counts page views.</p>
+<p class="updated">Last updated: 26 November 2026</p>
+<p>Notice – Mindful Screen Time is developed and owned by Sardor Jurayev, who is responsible for this policy. On the App Store it is distributed through Djamshid Jurayev's developer account. It is also on Google Play. This policy covers the iPhone and Android apps and explains what data Notice does — and does not — keep, and how this website counts page views. There is no account or login, no ads, and no analytics or tracking tools. Notice does not use iCloud or CloudKit, and the developer does not run a server for the app.</p>
 
 <p class="note">No account, nothing leaves your iPhone, Notice only knows the apps you connect. The app has no analytics and no ads. The App Store privacy label for Notice is <b>Data Not Collected</b>. On Android, nothing leaves your phone. There is no account and there are no ads.</p>
 
 <h2>What We Collect</h2>
-<p>There is no account. Notice does not require a login or any personal information to function.</p>
+<p>Notice does not ask for your name, email, or other contact details, and it does not send your data to us. What the app keeps stays on your device, except for one iPhone request to Apple, described under What leaves the device.</p>
 
 <h3>On iPhone</h3>
 <ul>
-<li>Notice stores, only on your iPhone, the names of the apps you connect, a session log kept for 120 days, and a Shortcuts run log. Nothing is sent anywhere. That data is deleted when you delete the app.</li>
+<li>The apps you connect are linked through automations in Apple's Shortcuts app, on your device. Notice does not use Apple's Family Controls or Screen Time API.</li>
+<li>Notice stores, only on the device, the list of connected apps (bundle IDs and app names), a visit log (bundle ID, app name, and timestamps) used for the stats in the app, and cached app icon images. The purpose is to show your connected apps, their icons, and those stats.</li>
 <li>Timers, notifications, and alerts (via Apple's AlarmKit) run locally on your device.</li>
 <li>Widgets and Dynamic Island displays run locally on your device.</li>
-<li>The iPhone app does not use analytics or advertising, and it does not include third-party analytics or advertising SDKs.</li>
+<li>The iPhone app does not use analytics or advertising, and it does not include third-party analytics, advertising, or tracking SDKs. It does not follow you across other companies' apps or websites.</li>
 </ul>
 
 <h3>On Android</h3>
@@ -62,26 +63,37 @@
 <li>Notice keeps the apps you connected, and your sessions and stats, on the phone. Nothing is sent anywhere.</li>
 </ul>
 
+<h2>Where It Is Stored</h2>
+<p>On iPhone, the list of connected apps, the visit log, and the cached icons are kept in the app's local storage and in an app group shared with Notice's widget. On Android, the chosen apps, timer sessions, and daily stats are kept in the app's local DataStore. Notice does not copy this data to a server, to iCloud, or to CloudKit.</p>
+<p>The same data is included in your normal device backup, like any other app's data, and only according to your own settings: an iCloud or computer backup on iPhone, and Android backup if that is turned on for your phone. Notice does not turn that backup off, and it does not use backup as its own sync. Deleting the app deletes the data on the device.</p>
+
+<h2>What Leaves the Device</h2>
+<p>On iPhone, the only network request Notice makes is to show app icons. It asks Apple's public iTunes Search/Lookup API (<code>itunes.apple.com</code>) for that app's App Store artwork. The request sends the selected app's bundle ID or app name, plus a country code, to Apple. Apple's privacy policy applies to that request: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a>. Nothing else is sent by the app. The developer never receives the request or Apple's reply.</p>
+<p>On Android (package <code>app.notice</code>), Notice does not declare the <code>INTERNET</code> permission and does not make network calls, so the app cannot send data off the phone. Notice does not transmit, sell, or share that data.</p>
+
 <h2>Crash Reports</h2>
-<p>If the iOS app crashes, Apple's built-in diagnostic tools may collect anonymous crash logs to help us fix bugs. This is handled entirely by Apple's operating system-level reporting, not by Notice directly. You can review or turn this off in your iPhone's Settings under Privacy &amp; Security &gt; Analytics &amp; Improvements.</p>
+<p>Notice does not send crash logs. If you have chosen to share analytics on your device, Apple or Google may share anonymous crash reports with the developer.</p>
+
+<h2>Your Rights</h2>
+<p>You can see your connected apps and stats in the app, and you can delete the stored data by deleting the app. If you are in the EEA, the UK, or another place with similar rules, you can ask to access, correct, or delete personal data, and you can object to processing or ask us to limit it. We do not receive the data stored on your device, so we cannot open or edit that copy ourselves. For the iPhone and Android apps, the only third party is Apple, for the iPhone icon lookup. Contact us and we will help with any request we can act on.</p>
 
 <h2>This Website</h2>
 <p>This website uses GoatCounter, cookie-free page-view analytics, at <a href="https://noticeapp.goatcounter.com">https://noticeapp.goatcounter.com</a>. GoatCounter keeps aggregate page-view statistics. It uses no cookies and does no cross-site tracking. GoatCounter's privacy policy is at <a href="https://www.goatcounter.com/help/privacy">https://www.goatcounter.com/help/privacy</a>.</p>
 
 <h2>Children's Privacy</h2>
-<p>Notice is not directed at children under 13. It does not knowingly collect personal data from children. What the app stores stays on the device and is not sent to us.</p>
+<p>Notice is not directed at children under 13. It does not ask for an account or contact details from any user, including children.</p>
 
 <h2>Changes to This Policy</h2>
 <p>If Notice introduces new features that involve data collection (for example, optional future account-based features), this policy will be updated and the in-app privacy details — including Apple's App Privacy information and Google Play's Data safety form — will be revised accordingly.</p>
 
 <h2>Contact</h2>
-<p>Sardor Jurayev is responsible for Notice and for this policy. If you have questions, contact <a href="mailto:Noticemindfullscreentime@gmail.com">Noticemindfullscreentime@gmail.com</a>.</p>
+<p>Sardor Jurayev is responsible for Notice and for this policy. If you have questions about this policy, or you want to use the rights above, contact us at <a href="mailto:notice@noticeapp.app">notice@noticeapp.app</a>. Mail to that address arrives in the inbox <a href="mailto:Noticemindfullscreentime@gmail.com">Noticemindfullscreentime@gmail.com</a>.</p>
 </div>
 </main>
 <footer>
   <div class="wrap">
     <span>© 2026 Notice – Mindful Screen Time</span>
-    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:Noticemindfullscreentime@gmail.com">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a><a href="https://play.google.com/store/apps/details?id=app.notice">Google Play</a></nav>
+    <nav aria-label="Footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:notice@noticeapp.app">Contact</a><a href="https://apps.apple.com/app/id6794823541">App Store</a><a href="https://play.google.com/store/apps/details?id=app.notice">Google Play</a></nav>
   </div>
 </footer>
 <script data-goatcounter="https://noticeapp.goatcounter.com/count"
